@@ -80,7 +80,7 @@ INSERT INTO T_D_EXPEDITION_EXP (EXP_DATE,
                     (20161106, 0, 1000, 18, 1, 10);
 
 -- SOFIANE
-INSERT INTO T_D_PRODUCT_TYPE (PTY_TYPE)
+INSERT INTO T_D_PRODUCT_TPY (PTY_TYPE)
                         values ('Pergola'),
                                 ('Porte'),
                                 ('Clôture'),
@@ -165,12 +165,14 @@ INSERT into T_D_STOCKMOVEMENT_MVT (MVT_QUANTITY, MVT_DATE, MVT_CANCELLED, MVT_PR
 
 -- CHARLOTTE
 INSERT into TYPE_DOSSIER_TDS (TDS_TYPE)
-        values  ('NPAI'),
-                ('NP'),
-                ('EC'),
-                ('EP'),
-                ('SAV');
+        values  ('En attente de réception'),
+                ('Reçu'),
+                ('Attente de diagnostic'),
+                ('Attente de cloture'),
+                ('Cloturer'),
+                ('Annuler');
 
+-- SOFIANE
 INSERT into T_D_Dossier_SAV_DSV (DSV_ETAT, DSV_PHOTO, DSV_COM_DIAG_INITIAL, DSV_COM_DIAG_TERM, DSV_PRD_ID, DSV_ORH_ID, DSV_TDS_ID)
         values  (1, 'Image du portail.jpeg', 'Casse', '', 13, 1, 1),
                 (1, 'Image du moteur de porte.jpeg', 'Fissure', '', 14, 2, 2),
@@ -182,12 +184,14 @@ INSERT into T_D_Dossier_SAV_DSV (DSV_ETAT, DSV_PHOTO, DSV_COM_DIAG_INITIAL, DSV_
                 (0, 'Image de la clôture.jpeg', 'Fissure', '', 20, 8, 5),
                 (0, 'Image du moteur de porte.jpeg', 'Systeme electronique', '', 21, 9, 5),
                 (0, 'Image du moteur de porte.jpeg', 'Systeme electronique', '', 22, 10, 4);
-                
+
+-- SOFIANE            
 INSERT into TYPE_USER (Typ_type) 
             values ('Admin'),
                    ('Technicien SAV'),
                    ('Technicien HOTLINE');
 
+-- SOFIANE
 Insert into users (username, password, mail, user_type_id )
             values  ('admin', 'admin', 'admin@menuiz.com', 4),
                     ('tech1', 'tech1', 'technicien1@menuiz.com', 5),

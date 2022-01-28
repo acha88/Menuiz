@@ -1,6 +1,14 @@
 <?php 
 // SOFIANE 20/01/2022 
-       session_start();   
+       session_start();
+    //setcookie('test',
+    //         'testing', 
+    //          [
+    //           'expires' => time() + 3600,
+    //           'secure' => true,
+    //           'httponly'=> true,
+    //          ]
+    //        );
 ?>
 <html>
     <head>
@@ -11,60 +19,57 @@
         <title>Login</title>
     </head>
 <body>
-    <nav>
-        <img src="img\MenuizMan_logo.png" alt="logo">
-        <h2>Connectez-vous</h2>   
-        <a class="titleRegister" href="register.php">Contacter l'administrateur</a>            
+    <nav> 
+        <a class="contact-admin" href="mailto:exemple@exemple.com">Contacter l'administrateur</a>
+        <img class="headLogo logo" src="img\MenuizMan_logo.png" alt="logo">            
     </nav>
     <!-- // SOFIANE 20/01/2022 -->
-    <section class="formLogin">
+    <div class="box-container">
+        <div class="login-box">
         <form action="" method="POST">
+            <fieldset class="login-fieldset">
+                <legend class="login-legend">Connexion</legend>
                 <!-- username   -->
-                <label for="username">Email : </label>
-                <input class="inputLogin" type="text" name="username" class="form-control" id="username" placeholder="Entrer votre email">     
+                <label for="username" class="login-label">Username : </label>
+                <input class="input-login" type="text" name="username" class="form-control" id="username" placeholder="Entrer votre email">     
                 <!-- password  -->
-                <label for="password">Password :</label>
-                <input class="inputLogin" type="password" class="form-control" id="pwd" name="password" placeholder="Entrer votre mot de passe">
+                <label for="password" class="login-label">Password :</label>
+                <input class="input-login" type="password" class="form-control" id="pwd" name="password" placeholder="Entrer votre mot de passe">
                 <!-- submit -->
-                <input type="submit" class="btnLogin" value="Se connecter">
+                <input type="submit" class="btn-login" value="Se connecter">
                 <br>
                 <small class="smallLogin">Ne partagez jamais vos identifiants de connexion.</small>
+            </fieldset>
         </form>
-    </section>
-    <div>
+    </div> 
+    </div>
+        <div class="box-container">
         <?php
     // SOFIANE 20/01/2022 
     // TO DO - PASSWORD CHECK (déjà préparé dans la classe);
     // enregistrement de l'username en session
-        if (isset($_POST['username']) && isset($_POST['password'])) { 
+            if (isset($_POST['username']) && isset($_POST['password'])) { 
                 include "modules/classConnector.php";
                 include "modules/ClassUser.php";
                 $user = new User();
                 $user->setUsername($_POST['username']);
                 $user->setPassword($_POST['password']);
-                //  print $_POST['username'];
-                //  print $_POST['password'];
                 $check = $user->checkName();
                 $type = $user->returnType();
-                //         $_SESSION['test'] = $type;
-                // var_dump($_SESSION['test']);
-                // $bob = $user->checkType();
-                // print $bob['typ_type'];
                 if ($check == 1) {
                     $_SESSION['LOGGED_USER'] = $_POST['username'];
                     $_SESSION['password'] = $_POST['password'];
                     $_SESSION['allow'] = 'yes';
                     $type = $user->returnType();
                     $_SESSION['type_user'] = $type['typ_type'];
-                    // print ;
-                    // print $_SESSION['usertype'];
+                    
                     header("Location: index.php");             
                 } else {                        
-                    print "<h4 class='btn btn-warning'>Une erreur a été omise lors de votre tentative de connexion, veuillez recommencer !</h4>";
+                    print "<h4 class='btn btn-warning'> ERREUR, mauvais Login ou Password !</h4>";
                 }
             } 
         ?>
-    </div>
+        </div>
     <?php
     include "view/footer.php";
     ?>
