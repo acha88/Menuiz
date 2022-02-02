@@ -130,8 +130,8 @@ background: #ffffffd0;
 .contact-admin:active{
     background: #ffffffcb;
 }
-/* PAGE SEARCH */
-/* SEARCH FLORENT*/
+/* PAGE CREATE */
+/* CREATE FLORENT*/
 .technicienHOTLINE {
     display: flex;
     flex-wrap: wrap;
@@ -139,8 +139,8 @@ background: #ffffffd0;
 .floSection {
     display: flex;
     flex-direction: row;
-    margin: 6%;
-    margin-top: 4%;
+    margin: 10%;
+    margin-top: 2%;
     width: 50%;
     font-size: 18px;
 }
@@ -207,13 +207,23 @@ background: #ffffffd0;
 /*SEARCH CHARLOTTE */
 .chaSection {
     display: flex;
-    flex-direction: row;
-    margin-top: 8%;
-    margin-left: 40vh;
+    flex-wrap: wrap;
+    margin-top: 2%;
+    margin-left: 35%;
     padding: 10px 30px;
     font-size: 18px;
     min-width: 40%;
 }
+.chaSectionTicket {
+    display: flex;
+    flex-wrap: wrap;
+    margin-top: 2%;
+    margin-left: 5%;
+    padding: 10px 30px;
+    font-size: 18px;
+    min-width: 40%;
+}
+
 .chaFieldsetSearchPrincipal {
     border: #5292e6cb 5px ridge;
     background-color: #e3ecf0;
@@ -253,19 +263,29 @@ textarea {
     margin: 0 12%;
 }
 /* affichage card vue hotline*/
-._folderHotlineE {
+._folderHotline {
     border: #5292e6cb 5px ridge;
     background-color: #fff;
-    border-radius: 2%;
-    margin: 5%;
-    padding: 1%;
+    margin-left: 0;
+    margin-right: 2%;
+    margin-top: 2%;
+    padding: 1.5%;
     border-radius: 1%;
-    height: 30vh;
-    width: 35vh;
+    height: 40vh;
+    width: 45vh;
     -webkit-box-shadow: 1px 0px 25px 5px rgba(0,0,0,0.61); 
     box-shadow: 1px 0px 25px 5px rgba(0,0,0,0.61);
 }
-
+.title_folderHotline {
+    text-align: center;
+    margin-bottom: 3%;
+    font-size: 20px;
+    font-weight: 00;
+    color: #387fdbcb;
+}
+hr {
+    border: #5292e6cb 1px solid;
+}
 /* AFFICHAGE DOSSIER */
 #affichage {
     width: 30%;

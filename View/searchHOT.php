@@ -72,33 +72,4 @@
             </fieldset>    
         </form>
     </section>
-<!-- Partie code par Charlotte le 19/01/2022 -->
-<!-- code php ; récupération et affichage de la recherche -->
-    <section class="chaSection">
-        <form method="POST" action="">
-                <fieldset class="chaFieldsetSearchPrincipal">
-                    <legend class="chaLegend">Rechercher un dossier :</legend>
-                    <fieldset class="chaFieldsetSearch">
-                    <label for="">Par type de diagnostic : </label>
-                    <input type="text" name="typeDiag">
-                    <input class="btnSearch" type="submit" value="Rechercher">
-                </fieldset>
-                <fieldset class="chaFieldsetSearch">
-                    <label for="">Par numéro de commande ou facture : </label>
-                    <input type="text" name="numCmd">
-                    <input class="btnSearch" type="submit" value="Rechercher">
-                </fieldset>
-                <fieldset class="chaFieldsetSearch">
-                    <label for="">Par dénomination client : </label>
-                    <input type="text" name="recherche">
-                    <input class="btnSearch" type="submit" value="Rechercher">
-                </fieldset>
-                <fieldset class="chaFieldsetSearch">
-                    <label for="">Par nom de produit : </label>
-                    <input type="text" name="productName">
-                    <input class="btnSearch" type="submit" value="Rechercher">
-                </fieldset>
-            </fieldset>
-        </form>
-    </section>
 </main>

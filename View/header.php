@@ -10,6 +10,9 @@
             if($_SESSION['type_user'] === 'Technicien SAV') {
                 echo "<a href='search.php'>Recherche des dossiers</a>";
             }
+            if($_SESSION['type_user'] === 'Technicien HOTLINE') {
+                echo "<a href='searchHOTLINE.php'>Recherche des tickets</a>";
+            }
             ?>
             <a href="logout.php">Deconnexion </a>
             <img class="logo headLogo" src="img\MenuizMan_logo.png" alt="logo">

@@ -17,7 +17,7 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-   <link rel="stylesheet" href="css/style.css">
+    <link rel="stylesheet" href="css/style.css">
     <title>Accueil </title>
 </head>
 <body>
@@ -58,18 +58,18 @@
                 echo "<H1 class='form-legend'>Bienvenue ". $_SESSION['type_user']."</H1>";
                 //  include "view/technicienHOTView.php";
                 include "View/searchHOT.php";
-                include "modules/ClassDossierSAV.php";
-                    $SAV = new DossierSAV();
-                    if (isset($_POST['typeDiag'])) {                    
-                        $SAV->getTypeDiag($_POST['typeDiag']);
-                    }
-                    else if(isset($_POST['productName'])) {                  
-                        $SAV->getProductName($_POST['productName']);
-                    }
-                    else if(isset($_POST['numCmd'])) {                   
-                        $SAV->getNumCmd($_POST['numCmd']);
-                    }  
-            } 
+                // include "modules/ClassDossierSAV.php";
+                //     $SAV = new DossierSAV();
+                //     if (isset($_POST['typeDiag'])) {                    
+                //         $SAV->getTypeDiag($_POST['typeDiag']);
+                //     }
+                //     else if(isset($_POST['productName'])) {                  
+                //         $SAV->getProductName($_POST['productName']);
+                //     }
+                //     else if(isset($_POST['numCmd'])) {                   
+                //         $SAV->getNumCmd($_POST['numCmd']);
+                //     }  
+            }
     ?>
 </div>
     <div id="sav-box" class="box-container">
