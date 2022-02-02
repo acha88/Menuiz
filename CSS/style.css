@@ -159,17 +159,11 @@ background: #ffffffd0;
     border: #5292e6cb 2px ridge;
     background-color: #a7c4e99d;
     border-radius: 2%;
-    margin: 2%;
+    margin: 5% 15%;
     padding: 2%;
+    width: 70%;
 }
-.floFieldsetCoo {
-    border: #5292e6cb 2px ridge;
-    background-color: #a7c4e99d;
-    border-radius: 2%;
-    margin: 2%;
-    padding: 2%;
-}
-.floFieldsetPro {
+.floFieldsetDos {
     border: #5292e6cb 2px ridge;
     background-color: #a7c4e99d;
     border-radius: 2%;
@@ -203,7 +197,16 @@ background: #ffffffd0;
     position: relative;
     font-weight: 700;
 }
-
+td {
+    width: 10rem;
+    height: 2rem;
+    border: 1px ridge #387fdbcb;
+    text-align: center;
+}
+th {
+    background: #387fdbcb;
+    border-color: white;
+}
 /*SEARCH CHARLOTTE */
 .chaSection {
     display: flex;
