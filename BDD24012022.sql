@@ -2,6 +2,7 @@
 -- Mon Jan 24 15:32:13 2022
 -- Model: New Model    Version: 1.0
 -- MySQL Workbench Forward Engineering
+-- TRAVAILLER PAR SOFIANE, CHARLOTTE ET FLORENT
 
 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0;
 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0;
@@ -493,7 +494,9 @@ SET SQL_MODE=@OLD_SQL_MODE;
 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS;
 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS;
 
-
+-- -----------------------------------------------------
+-- Table Privilege USERS                              --
+-- -----------------------------------------------------
 CREATE USER "tech1"@'localhost' IDENTIFIED BY "tech1";
 GRANT SELECT, INSERT, UPDATE ON `Menuiz`.* TO "tech1"@'localhost' WITH GRANT OPTION;
 
