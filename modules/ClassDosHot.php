@@ -11,7 +11,7 @@ Class TechHOTLINE {
             echo '</tr>';
         foreach($results as $data){
             echo '<tr>';
-            echo '<th><input type="radio" name="produit" value="'.$data['ODT_ID'].'"></th>';
+            echo '<th><input type="radio" name="produit" value="'.$data['ODT_ID'].'" required></th>';
             echo '<td>' .$data['PRD_DESCRIPTION'].'</td>';
             echo '<td>' .$data['PRD_REFERENCE'].'</td>';
             echo '<td>' .$data['PRD_DESIGNATION'].'</td>';
@@ -100,8 +100,24 @@ Class TechHOTLINE {
         $stmt -> bindvalue( 4 , $valuescoo['comDiag'], PDO::PARAM_STR);
         
         $result = $stmt->execute();
-        return var_dump($result); // Pour tester
+
+        $this->insertStoryCreation($valuescoo['numDos']);
+
+        return $result;
+        
     }
+
+     // SOFIANE 02/02/2022
+    // function d'insert de l'historique à la création de dossier;
+    private function insertStoryCreation($param){
+        $db = Connector::getInstance();
+        $queryHistory = $db->prepareQuery('INSERT INTO  T_D_HISTORY_SAV_HSV (HSV_DSV_ID, HSV_LIBELLE, HSV_USERNAME)
+                        VALUES( ? ,"CREATION", ?)');
+        $queryHistory->bindValue(1, $param, PDO::PARAM_INT); 
+        $queryHistory->bindValue(2, $_SESSION['LOGGED_USER'], PDO::PARAM_STR); 
+        $queryHistory->execute();
+    }
+
 }
 
 ?>

@@ -26,6 +26,7 @@ class User {
 	}
 
     // function de check de l'utilisateur si le nom existe (retourne 1 si oui ou 0 si non);
+    // Sofiane 20/01/2022
     public function checkName(){
         $db = Connector::getInstance();
         $checkIfExist = $db->prepareQuery('SELECT 1 FROM `users` WHERE `username` = ?');
@@ -34,6 +35,7 @@ class User {
         return  $checkIfExist->fetchColumn();
     } 
     // function qui retourne le type d'utilisateur en string (ex: 'admin', 'technicien SAV', 'technicien HOTLINE')
+    // Sofiane 20/01/2022
     Public function returnType() {
         $db = Connector::getInstance();
         $query = $db->prepareQuery('SELECT typ_type from users as usr
@@ -45,6 +47,8 @@ class User {
         $result = $query->fetch();
         return $result;
         }
+    //function de recherche du password dans la BDD pour la comparaison avec le password entré au login.
+    // Sofiane 20/01/2022
     public function returnPw(){
             $db = Connector::getInstance();
             $checkIfExist = $db->prepareQuery("SELECT * FROM `users` WHERE `username` = ?");

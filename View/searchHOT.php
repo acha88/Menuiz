@@ -92,7 +92,7 @@
                     ?>
                     <br>
                     <label class="floLabel">Diagnostic : </label><br>
-                    <textarea name="comDiag" id="" cols="70" rows="10" placeholder="Détail de l'appel du client"></textarea>
+                    <textarea name="comDiag" id="" cols="70" rows="10" placeholder="Détail de l'appel du client" required></textarea>
                 </fieldset>
 
                 <div>
@@ -102,7 +102,9 @@
                             if(isset($_POST['etatDos']) && isset($_POST['produit']) && isset($_POST['idCom']) && isset($_POST['comDiag'])) {
                             $hot = new TechHOTLINE();
                             $hot->postForm($_POST);
-                            }
+                            if (count($_POST)>0) echo "<script type='text/javascript'>alert('Le dossier a bien été créé');</script>";
+                        }
+
                         ?>
                 </div>
             </fieldset>    

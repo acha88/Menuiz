@@ -3,13 +3,13 @@
 
 
 class Administrator {
-    // function d'ajout d'un utilisateur
-    // TO DO FORMULAIRE D'AJOUT
-    // private $adminName;
+   
 
-    // public function setAdmin($param){
-    //     return $this->adminName = $param;
-    // }
+
+
+    // SOFIANE 27/01/2022
+
+    // SOFIANE LAST MODIF 31/01/2022 Ajout de la connexion à la BDD avec compte utilisateur aux privilèges restraints (pour la SECURITE)
 
     public function registerUser($post){
         $db = Connector::getInstance();
@@ -36,12 +36,8 @@ class Administrator {
         }
 
     }
-
-
-
-
     // function de delete d'un utilisateur
-    // TO DO FORMULAIRE DE SUPPRESSION
+    // SOFIANE 27/01/2022
     public function removeUser($post){
         $db = Connector::getInstance();
         $rmvQuery = $db->prepareQuery('DELETE FROM `users` WHERE `username` = ?');
@@ -54,18 +50,23 @@ class Administrator {
             echo '<p class="warning"> L\'utilisateur n\'a pas été supprimé ou vous avez entré un nom d\'utilisateur qui n\'existe pas.</p>';
         }
     }
-    
+     // SOFIANE 27/01/2022
     private function printUsers($param){
-        echo "<div class='form-box form-group '>";
+        echo "<div class='fold-container shadow contour'>";
         foreach($param as $table){
             echo "<div class='contour'>";
-            foreach($table as $row){
-                echo "<p>".$row."</p>";
-            }
+            echo "<p> Username : ".$table['username'].'</p>';
+            echo "<p> Password : ".$table['PASSWORD'].'</p>';
+            echo "<p> Mail : ".$table['MAIL'].'</p>';
+            echo "<p> Type : ".$table['typ_type'].'</p>';
+            // foreach($table as $row){
+            //     echo "<p>".$row."</p>";
+            // }
             echo "</div>";
         }
         echo "</div>";
     }
+     // SOFIANE 27/01/2022
     public function viewUsers(){
         $db = Connector::getInstance();
         $query = $db->prepareQuery('SELECT US.username, US.PASSWORD, US.MAIL, typ.typ_type FROM `USERS` AS US
@@ -73,10 +74,50 @@ class Administrator {
         $query->execute();
         $result = $query->fetchAll();
         return $this->printUsers($result);
+    }
+    // function pour obtenir un tableau d'un utilisateur avec son type
+    // qui ensuite execute une function qui créera et definira ses privilèges dans la database
+    // SOFIANE 31/01/2022
+    public function setUserPriv($paramName){
+        $db = Connector::getInstance();
+        $query = $db->prepareQuery('SELECT * FROM `USERS` AS US
+                            JOIN type_user AS typ 
+                            ON US.user_type_id = typ.typ_user_id
+                            WHERE US.username = ?');
+        $query->bindValue(1, $paramName, PDO::PARAM_STR);
+        $query->execute();
+        $result = $query->fetchAll();
+        // return var_dump($result);
+        return $this->createUserPriv($result);
+    }
+    // function pour créer un utilisateur dans la database avec des privilèges selon son rôle
+    // SOFIANE 31/01/2022
+    // TO DO - VERIF pourquoi Grant ne fonctionne pas en requête par PDO.
+    public function createUserPriv($param){
+        $db = Connector::getInstance();
+        $query = $db->prepareQuery("CREATE USER ?@'localhost' IDENTIFIED BY ?");
+        $query2 = $db->prepareQuery("GRANT SELECT, INSERT, UPDATE ON `Menuiz`.* TO ?@'localhost' WITH GRANT OPTION");
 
-
-
+        foreach($param as $data){
+            if(strcmp($data['Typ_type'], 'Technicien SAV') !== 0 || strcmp($data['Typ_type'], 'Technicien HOTLINE') !== 0){
+                var_dump($data);
+                $query->bindValue(1, $data['username'], PDO::PARAM_STR); 
+                $query->bindValue(2, $data['password'], PDO::PARAM_STR); 
+                $query2->bindValue(1, $data['username'], PDO::PARAM_STR); 
+                $query->execute();  
+                $query2->execute();       
+                        
+            }
         }
+    }
+    public function getUsersList(){
+    $db = Connector::getInstance();
+    $query = $db->prepareQuery('SELECT * FROM `USERS` AS US
+                                JOIN type_user AS typ ON US.user_type_id = typ.typ_user_id');
+    $query->execute();
+    $result = $query->fetchAll();
+    return $result;
+    }
 }
 
 

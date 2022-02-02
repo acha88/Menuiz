@@ -1,6 +1,6 @@
 <?php 
 
-    // SOFIANE 20/01/2022
+    // SOFIANE 20/01/2022 => 02/02/2022
     // check pour voir si l'utilisateur est authentifié et autorisé  
     session_start();
     if($_SESSION['allow'] <> 'yes') {
@@ -8,7 +8,6 @@
     } else {
      $_SESSION['allow'] = 'yes';
     }
-    
     include "modules/ClassConnector.php";
     
 ?>
@@ -26,9 +25,9 @@
 
 <?php include "view/header.php"; ?>
 
-<h3> Recherche de dossiers </h3>
+<h3></h3>
 <div class="container">
-    <div class="half-box chaFieldsetSearchPrincipal">
+    <div class="half-box shadow contour">
         <div class="form-box">
                 <form action="" method="POST">
                 <fieldset class="padding">
@@ -40,6 +39,7 @@
                                  <option></option>
                                  <option value="1">En attente de recep.</option>
                                  <option value="2">Reçu</option>
+                                 <option value='3'>Attente de diagnostic</option>
                                  <option value="4">Attente de cloture</option>
                                  <option value="5">Cloturé</option>
                                  <option value="6">Annulé</option>
@@ -48,7 +48,7 @@
  
                      <div class="form-group">
                      <label for="searchord">Recherche par numero de commande</label>
-                         <input type="number" class="" name="searchord" >
+                         <input type="text" class="" name="searchord" >
                      </div>
  
                      <div class="form-group">
@@ -68,14 +68,32 @@
         </div>
         
     </div>
-    <div class="half-box chaFieldsetSearchPrincipal">
+    <div class="half-box shadow contour">
         <?php
+        // if(isset($_SESSION['dossieratraite']){
+            // var_dump($_POST);
+        // }
+
+
+
          if(isset($_POST['searchtype']) || isset($_POST['searchord']) || isset($_POST['searchdate']) || isset($_POST['searchprod'])){
             include "modules/ClassTechSAV.php";
             $mrsav = new TechSAV();
-            $mrsav->searchForMe($_POST);
-
-            }
+            $mrsav->searchForMe($_POST);  
+            // $val1 = $_POST['searchtype'];
+            // $val2 = $_POST['searchord'];
+            // $val3 = $_POST['searchdate'];
+            // $val4 = $_POST['searchprod'];          
+        
+        }
+        if(isset($_POST['dossierid'])){ 
+            include "Modules/ClassTechSAV.php";
+            $mrsav2 = new TechSAV();
+            $mrsav2->updateFolder($_POST);
+        }
+    
+        
+        
 
 
         ?>
