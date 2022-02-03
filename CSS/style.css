@@ -41,7 +41,6 @@ nav {
     margin-left: 35%;
     margin-right: 10%;
 }
-
 /* ESPACE MAIN */
 main {
     display: flex;
@@ -87,8 +86,7 @@ main {
     background: #387fdbcb;
     border-radius: 5%;
     border-style: none;
-    border: 0px 5px 5px 0px #5292e6cb solid;
-    
+    border: 0px 5px 5px 0px #5292e6cb solid;  
 }
 .btn-login:hover{
 background: #8fbdf8cb;
@@ -112,7 +110,6 @@ background: #ffffffd0;
     margin-left: 3px;
     letter-spacing: 2px;
 }
-
 .contact-admin{
     display:flex;
     justify-content: center;
@@ -124,7 +121,6 @@ background: #ffffffd0;
     border-radius: 5%;
     /* border-style: none; */
     border: 0px 5px 5px 0px hsl(210, 40%, 2%) solid;
-
 }
 .contact-admin:hover{
     background: #90b4e2cb;
@@ -146,7 +142,6 @@ background: #ffffffd0;
     width: 50%;
     font-size: 18px;
 }
-
 .floFieldsetprincipal {
     border: #5292e6cb 5px ridge;
     background-color: #e3ecf0;
@@ -228,7 +223,6 @@ th {
     font-size: 18px;
     min-width: 40%;
 }
-
 .chaFieldsetSearchPrincipal {
     border: #5292e6cb 5px ridge;
     background-color: #e3ecf0;
@@ -295,7 +289,6 @@ hr {
 #affichage {
     width: 30%;
 }
-
 /* FOOTER */
 footer {
     margin-top: 1%;
@@ -321,16 +314,13 @@ footer {
     margin: 3%;
     width: 40%;
 }
-
 /* SOFIANE A PARTIR D'ICI */
-
 .adminPage {
     display: flex;
     flex-direction: row;
     width: 100%;
     margin: 0 5%;
 }
-
 .container {
     display: flex;
     width: 95%;
@@ -338,13 +328,10 @@ footer {
     margin-top: 5%;
     justify-content: space-around;
 }
-
 .tech-container{
-    display: flex;
-    
+    display: flex;   
     justify-content: center;   
 }
-
 .fold-container{
     display: flex;
     width: 100%;
@@ -359,25 +346,19 @@ footer {
 .space{
     justify-content: space-evenly;
 }
-
 .wrap{
     flex-wrap: wrap;
-}
-
-  
+} 
 .tablerow:hover {
       background-color: #387fdbcb;
 }
-
 /* class for notifications */
 .success{
     background: hsl(127, 100%, 41%);
 }
-
 .warning{
     background: hsl(49, 100%, 50%);
 }
-
 /* form btns*/
 .btn-submit{
     display:flex;
@@ -391,16 +372,13 @@ footer {
     border-style: none;
     border: 0px 5px 5px 0px #5292e6cb solid;
 }
-
 .btn-submit:hover{
     background: #8fbdf8cb;
 }
 .btn-submit:active{
     background: #ffffffd0;
 }
-
 /* form inputs */
-
 .soForm {
     display: flex;
     flex-direction: column;
@@ -438,9 +416,7 @@ footer {
     width: 100%;
     padding: 2%;
     /* margin: 2%; */
-
 }
-
 .form-control{
     background: #8fbdf8cb;
     height: 3em;
@@ -458,9 +434,7 @@ footer {
 .folder-info{
     color: hsl(207, 70%, 15%);
     margin-left: 2px;
-
 }
-
 .contour {
     display: flex;
     flex-direction: column;
@@ -484,14 +458,10 @@ footer {
 .padding{
     padding: 3%;
 }
-
 .blue-border{
     border: 2px #5292e6cb solid;
 
 }
-
 .dark{
     background:#8fbdf8cb ;
 }
-
-

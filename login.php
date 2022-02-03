@@ -1,6 +1,6 @@
 <?php 
 // SOFIANE 20/01/2022 
-       session_start();
+    session_start();
     //setcookie('test',
     //         'testing', 
     //          [

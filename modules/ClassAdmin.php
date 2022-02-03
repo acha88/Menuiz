@@ -1,28 +1,16 @@
 <?php
-
-
-
 class Administrator {
-   
-
-
-
     // SOFIANE 27/01/2022
-
     // SOFIANE LAST MODIF 31/01/2022 Ajout de la connexion à la BDD avec compte utilisateur aux privilèges restraints (pour la SECURITE)
-
     public function registerUser($post){
         $db = Connector::getInstance();
         $username = $post['username'];
         $password = $post['password'];
         $mail = $post['mail'];
         $usertype = intVal($post['usertype'], 10);
-
         var_dump($usertype);
-
         $regQuery = $db->prepareQuery('INSERT INTO `users` (`username`, `password`, `mail`, `user_type_id`)
                                         values(?, ?, ?, ?)');
-
         $regQuery->bindValue(1, $username, PDO::PARAM_STR);
         $regQuery->bindValue(2, $password, PDO::PARAM_STR);
         $regQuery->bindValue(3, $mail, PDO::PARAM_STR);
@@ -34,7 +22,6 @@ class Administrator {
         } else {
             echo '<p class="warning"> L\'utilisateur n\'a pas été enregistré ou vous avez entré un nom d\'utilisateur deja existant.</p>';
         }
-
     }
     // function de delete d'un utilisateur
     // SOFIANE 27/01/2022
@@ -81,9 +68,9 @@ class Administrator {
     public function setUserPriv($paramName){
         $db = Connector::getInstance();
         $query = $db->prepareQuery('SELECT * FROM `USERS` AS US
-                            JOIN type_user AS typ 
-                            ON US.user_type_id = typ.typ_user_id
-                            WHERE US.username = ?');
+                                    JOIN type_user AS typ 
+                                    ON US.user_type_id = typ.typ_user_id
+                                    WHERE US.username = ?');
         $query->bindValue(1, $paramName, PDO::PARAM_STR);
         $query->execute();
         $result = $query->fetchAll();
@@ -97,7 +84,6 @@ class Administrator {
         $db = Connector::getInstance();
         $query = $db->prepareQuery("CREATE USER ?@'localhost' IDENTIFIED BY ?");
         $query2 = $db->prepareQuery("GRANT SELECT, INSERT, UPDATE ON `Menuiz`.* TO ?@'localhost' WITH GRANT OPTION");
-
         foreach($param as $data){
             if(strcmp($data['Typ_type'], 'Technicien SAV') !== 0 || strcmp($data['Typ_type'], 'Technicien HOTLINE') !== 0){
                 var_dump($data);
@@ -105,8 +91,7 @@ class Administrator {
                 $query->bindValue(2, $data['password'], PDO::PARAM_STR); 
                 $query2->bindValue(1, $data['username'], PDO::PARAM_STR); 
                 $query->execute();  
-                $query2->execute();       
-                        
+                $query2->execute();                
             }
         }
     }
@@ -119,6 +104,4 @@ class Administrator {
     return $result;
     }
 }
-
-
 ?>

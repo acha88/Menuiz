@@ -1,14 +1,12 @@
 <?php
-
 Class TechHOTLINE {
-
-    // PArtie code par Florent le 01/02/2022
+    // Partie code par Florent le 01/02/2022
     // Fonction d'affichage des résultats de la recherche d'un dossier SAV
     public function showProduct($results){   
-            echo '<table>';
-            echo '<tr>';
-            echo '<th></th><th>Nom</th><th>Référence</th><th>Type</th>';
-            echo '</tr>';
+        echo '<table>';
+        echo '<tr>';
+        echo '<th></th><th>Nom</th><th>Référence</th><th>Type</th>';
+        echo '</tr>';
         foreach($results as $data){
             echo '<tr>';
             echo '<th><input type="radio" name="produit" value="'.$data['ODT_ID'].'" required></th>';
@@ -17,11 +15,8 @@ Class TechHOTLINE {
             echo '<td>' .$data['PRD_DESIGNATION'].'</td>';
             echo '</tr>';
         }
-            echo '</table>';
-
+        echo '</table>';
     }
-
-
     // Fonction qui affiche le numéro de dossier automatiquement
     public function getFolderNum(){
         $db = Connector::getInstance();
@@ -34,8 +29,7 @@ Class TechHOTLINE {
         $varFolder = ($varFolder + 1);     
         return $varFolder;   
     }
-
-        // PArtie code par Florent le 01/02/2022
+    // PArtie code par Florent le 01/02/2022
     // Fonction affichage de la recherche par numéro de téléphone
     public function searchDos() {       
         echo '<form action="" method="POST">';
@@ -47,8 +41,7 @@ Class TechHOTLINE {
         echo '</fieldset>';
         echo '</form><br>';
     }
-
-       // Partie code par Florent le 31/01/2022
+    // Partie code par Florent le 31/01/2022
     // Fonction de recherche par numéro de téléphone pour afficher les produits.
     public function searchHot($query){
         $db = Connector::getInstance();
@@ -63,8 +56,7 @@ Class TechHOTLINE {
         // var_dump($results); // pour tester
         return $this->showProduct($results);
     }
-
-    // PArtie code par Sofiane le 01/02/2022
+    // Partie code par Sofiane le 01/02/2022
     // Fonction de recherche des résultats par rapport au numéro de téléphone
     public function searchDog($query){
         $db = Connector::getInstance();
@@ -78,7 +70,6 @@ Class TechHOTLINE {
         $results = $QuerySearch->fetchAll();
         return $results;
     }
-
     // Fonction qui recherche la liste de tous les numéros de commande
     // public function getOrderNum(){
     //     $db = Connector::getInstance();
@@ -87,37 +78,27 @@ Class TechHOTLINE {
     //     $result = $QueryNumOrder->fetchAll();
     //     return $this->createOptions($result);
     // }
-
-
     // Fonction qui enregistre les données du formulaire dans la BDD
     public function postForm($valuescoo) {            
         $db = Connector::getInstance();
         $stmt = $db->prepareQuery("INSERT INTO t_d_dossier_sav_dsv (DSV_TDS_ID, DSV_PRD_ID, DSV_ORH_ID, DSV_COM_DIAG_INITIAL) VALUES (? , ? , ? , ?)");
-        
         $stmt -> bindvalue( 1 , $valuescoo['etatDos'], PDO::PARAM_INT);
         $stmt -> bindvalue( 2 , $valuescoo['produit'], PDO::PARAM_INT);
         $stmt -> bindvalue( 3 , $valuescoo['idCom'], PDO::PARAM_INT);
         $stmt -> bindvalue( 4 , $valuescoo['comDiag'], PDO::PARAM_STR);
-        
         $result = $stmt->execute();
-
         $this->insertStoryCreation($valuescoo['numDos']);
-
-        return $result;
-        
+        return $result; 
     }
-
-     // SOFIANE 02/02/2022
+    // SOFIANE 02/02/2022
     // function d'insert de l'historique à la création de dossier;
     private function insertStoryCreation($param){
         $db = Connector::getInstance();
         $queryHistory = $db->prepareQuery('INSERT INTO  T_D_HISTORY_SAV_HSV (HSV_DSV_ID, HSV_LIBELLE, HSV_USERNAME)
-                        VALUES( ? ,"CREATION", ?)');
+                                            VALUES( ? ,"CREATION", ?)');
         $queryHistory->bindValue(1, $param, PDO::PARAM_INT); 
         $queryHistory->bindValue(2, $_SESSION['LOGGED_USER'], PDO::PARAM_STR); 
         $queryHistory->execute();
     }
-
 }
-
 ?>

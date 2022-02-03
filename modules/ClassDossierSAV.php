@@ -33,7 +33,6 @@ class DossierSAV {
         $result = $req->fetchAll();
         return $this->showDossier($result);
     }
-
     // CHARLOTTE 26/01/2022
     /* affichage par numero de commande ou facture */
     public function getNumCmd($param) {
@@ -51,7 +50,6 @@ class DossierSAV {
         $resultat = $query->fetchAll();
         return $this->showDossier($resultat);
     }
-    
     // CHARLOTTE 02/02/2022
     /* affichage par dénomination du client */
     public function getNameCustomer($param) {
@@ -68,7 +66,6 @@ class DossierSAV {
         $rep = $query->fetchAll();
         return $this->showDossier($rep);
     }
-
     // CHARLOTTE 02/02/2022
     /* affichage des produits par recherche du nom (designation) */
     public function getProductName($param) {
