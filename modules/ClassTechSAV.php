@@ -6,7 +6,6 @@ class TechSAV {
     public function showInitial($data){
         // echo "<div class='half-box'>";
         foreach($data as $dataRows){
-            // echo "<div class='fold-container'>";
             echo "<H4 class='folder-title'>Dossier non traité </H4>";
             echo '<form action="" method="POST">'; 
             echo " <input type='text' name='getorhnum' class='form-fold' value='".$dataRows['OHR_ORDERNUMBER']."' readonly>" ;
@@ -60,8 +59,6 @@ class TechSAV {
         $result = $query->fetchAll();
         return $this->printFolders($result);
         // return var_dump($_POST);
-
-
     }
     // function d'imprimerie du code HTML
     //  SOFIANE 26/01/2022
@@ -70,8 +67,8 @@ class TechSAV {
                 // print sizeof($data);
                 // echo "<div class=''>";
                 foreach($data as $datas){
-                    echo "<div class='form-box'>";
-                    echo '<form class="form-box blue-border" action="" method="POST">';
+                    echo "<div class=''>";
+                    echo '<form class="form-box" action="" method="POST">';
                     echo '<div class="form-box padding">';
                     echo "<legend class='form-legend'>Dossier Selectionné: ". $datas['OHR_ORDERNUMBER']."</legend>";
 
@@ -175,6 +172,7 @@ class TechSAV {
                     echo '</div>';
                     echo '</form>';
                     echo "</div>";
+                    echo "<hr>";
                     // echo '<?php if(isset($_POST["dossierid"])){
                     //     $mrsav2 = new TechSAV();
                     //     $mrsav2->updateFolder($_POST);

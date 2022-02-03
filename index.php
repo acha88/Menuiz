@@ -79,14 +79,14 @@
             // code d'initialisation de la page pour le Technicien SAV
             if($_SESSION['type_user'] === 'Technicien SAV') {
                     echo '<div id="sav-box" class="box-container">';
-                    echo '<div class="half-box shadow padding">';
+                    echo '<div class="chaFieldsetSearchPrincipal">';
                     echo "<H1 class='form-legend'>Bienvenue ". $_SESSION['type_user']. "</H1>";                
                     include "modules/ClassTechSAV.php";
                     $sav = new TechSAV();
                     $sav->getNotTreated();
                     echo '</div>';
                             if(isset($_POST['getsavid']) && isset($_POST['gettdsid']) && isset($_POST['getprdid']) && isset($_POST['getorhid'])){
-                                echo '<div class="half-box shadow padding">';
+                                echo '<div class="chaFieldsetSearchPrincipal">';
                                 $sav2 = new TechSav();
                                 $sav->printSAVFolder($_POST);
                                 echo '</div>';
